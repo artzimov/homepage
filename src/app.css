@@ -1,15 +1,48 @@
 @import 'tailwindcss';
-@import '@fontsource/fira-mono';
+@import '@fontsource/fraunces/400.css';
+@import '@fontsource/fraunces/500.css';
+@import '@fontsource/fraunces/600-italic.css';
 
 :root {
-	--new-black: #0e0e0e;
-	--font-body: 'Helvetica Neue', Arial, sans-serif;
-	--nav-link-hover-color: #ff3e00;
-	--color-text: theme(colors.stone.100);
-	--horizontal-padding: 120px;
-	--standard-gap: 45px;
-	--bg-color-body: theme(colors.neutral.700);
-	--border-tag: theme(colors.neutral.500);
+	/* palette — dark, forest-toned, warm ember accent */
+	--bg: #101210;
+	--bg-raised: #171a15;
+	--bg-raised-2: #1e2219;
+	--border: #2c3126;
+	--border-soft: #22261d;
+
+	--fg: #ece7d8;
+	--fg-muted: #a9ab99;
+	--fg-faint: #71735f;
+
+	--accent: #d3854f;
+	--accent-strong: #e59a63;
+	--accent-soft: rgba(211, 133, 79, 0.14);
+	--pine: #6f9470;
+	--pine-soft: rgba(111, 148, 112, 0.16);
+
+	--font-display: 'Fraunces', 'Iowan Old Style', Georgia, serif;
+	--font-body:
+		-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+
+	--container: 68rem;
+	--gutter: clamp(1.25rem, 5vw, 5rem);
+	--section-gap: clamp(3rem, 8vw, 6rem);
+
+	/* legacy aliases still referenced by components */
+	--color-text: var(--fg);
+	--horizontal-padding: var(--gutter);
+	--standard-gap: 2.75rem;
+	--bg-color-body: var(--bg-raised);
+	--border-tag: var(--border);
+	--nav-link-hover-color: var(--accent);
+	--new-black: var(--bg);
+}
+
+*,
+*::before,
+*::after {
+	box-sizing: border-box;
 }
 
 html,
@@ -26,36 +59,61 @@ html {
 }
 
 body {
-	background-color: black;
-	min-width: 800px;
-	color: var(--color-text);
+	background-color: var(--bg);
+	color: var(--fg);
 	font-family: var(--font-body);
+	-webkit-font-smoothing: antialiased;
+}
+
+h1,
+h2,
+h3,
+h4 {
+	font-family: var(--font-display);
+	font-weight: 500;
+	line-height: 1.15;
+	margin: 0;
 }
 
 h1 {
-	font-size: 3rem;
+	font-size: clamp(2.25rem, 4vw + 1rem, 3.5rem);
+	font-weight: 600;
+	letter-spacing: -0.01em;
 }
 
 h2 {
-	font-size: 2.5rem;
-	text-align: center;
+	font-size: clamp(1.75rem, 2vw + 1rem, 2.5rem);
+	text-align: left;
 }
 
 h3 {
-	font-size: 2rem;
-	text-align: center;
+	font-size: clamp(1.1rem, 1vw + 0.8rem, 1.35rem);
+	text-align: left;
+	font-weight: 600;
+	font-style: italic;
+	color: var(--fg-muted);
 }
 
 h4 {
-	font-size: 1.5rem;
+	font-size: 1.35rem;
 	font-weight: 600;
 }
 
+p {
+	line-height: 1.65;
+	color: var(--fg-muted);
+}
+
+a {
+	color: inherit;
+}
+
 svg {
-	fill: #f5f5f4;
+	fill: var(--fg-muted);
+	transition: fill 0.2s ease;
 }
 
 svg:hover {
 	cursor: pointer;
-	fill: orange;
+	fill: var(--accent);
 }
