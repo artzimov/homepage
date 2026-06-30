@@ -3,6 +3,7 @@
 	import '../app.css';
 
 	let { children } = $props();
+	let currentYear = new Date().getFullYear().toString();
 </script>
 
 <div class="app">
@@ -12,7 +13,7 @@
 		{@render children()}
 	</main>
 
-	<footer>© 2025 Artem Rasskazimov</footer>
+	<footer>© 2024-{currentYear} Artem Rasskazimov</footer>
 </div>
 
 <style>

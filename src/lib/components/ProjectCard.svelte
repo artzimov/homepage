@@ -16,29 +16,36 @@
 </script>
 
 {#snippet tag(tech: Stack)}
-	<span style={`background-color: #${tech.badgeColor}`} class="techtag">{tech.name}</span>
+	<span style={`background-color: #${tech.badgeColor}`} class="tag">{tech.name}</span>
 {/snippet}
 
-<div class="project">
+<div class="card">
 	<span class="thumb">
 		<img alt={title} src={image_url} />
 	</span>
 
 	<span class="text">
-		<span class="flex flex-col items-start gap-1.5">
+		<div class="flex flex-col items-start gap-1.5">
 			<h4>{title}</h4>
 			<p>{@html text}</p>
-		</span>
-		<div class="flex flex-row w-full flex-wrap gap-2">
-			{#each stackUsed as technology}
-				{@render tag(technology)}
-			{/each}
+		</div>
+
+		<div class="flex flex-col gap-2">
+			<div class="links">
+				<a class="tag" target="_blank" href={livedemo_url}>live demo</a>
+				<a class="tag" target="_blank" href={github_url}>code</a>
+			</div>
+			<div class="flex flex-row w-full flex-wrap gap-2">
+				{#each stackUsed as technology}
+					{@render tag(technology)}
+				{/each}
+			</div>
 		</div>
 	</span>
 </div>
 
 <style>
-	.project {
+	.card {
 		display: flex;
 		flex-direction: column;
 		min-height: 25rem;
@@ -63,7 +70,20 @@
 		gap: 1rem;
 	}
 
-	.techtag {
+	.links {
+		display: flex;
+		gap: 0.75rem;
+	}
+
+	a {
+		color: orange;
+	}
+
+	a:hover {
+		color: orangered;
+	}
+
+	.tag {
 		font-size: 0.8rem;
 		border: 1px solid grey;
 		padding: 0.5rem;
